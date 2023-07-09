@@ -1,0 +1,157 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text);
+}
+
+:root {
+  --text-dark: white;
+  --bg-color-dark: black;
+  --fn-btn-dark: #a7a7a7;
+  --operator-dark: #fd9427;
+  --num-btn-dark: #333333;
+
+  --text-light: black;
+  --bg-color-light: white;
+  --fn-btn-light: #05cdff;
+  --operator-light: #0280ff;
+  --num-btn-light: #cccccc;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: var(--text-light);
+    --bg-color: var(--bg-color-light);
+    --fn-btn: var(--fn-btn-light);
+    --operator: var(--operator-light);
+    --num-btn: var(--num-btn-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: var(--text-dark);
+    --bg-color: var(--bg-color-dark);
+    --fn-btn: var(--fn-btn-dark);
+    --operator: var(--operator-dark);
+    --num-btn: var(--num-btn-dark);
+  }
+}
+
+[color-scheme="light"] {
+  --text: var(--text-light);
+  --bg-color: var(--bg-color-light);
+  --fn-btn: var(--fn-btn-light);
+  --operator: var(--operator-light);
+  --num-btn: var(--num-btn-light);
+}
+
+[color-scheme="dark"] {
+  --text: var(--text-dark);
+  --bg-color: var(--bg-color-dark);
+  --fn-btn: var(--fn-btn-dark);
+  --operator: var(--operator-dark);
+  --num-btn: var(--num-btn-dark);
+}
+
+.container {
+  margin: 14rem auto 0;
+  width: 24rem;
+  height: 34rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.num-display {
+  width: 82%;
+  height: 25%;
+  font-size: 3rem;
+  text-align: right;
+}
+
+.result {
+  font-size: 75%;
+  opacity: 50%;
+}
+
+.calc-btns {
+  width: 82%;
+  height: 72%;
+  display: grid;
+  grid-template-columns: repeat(4, 4.5rem);
+  grid-template-rows: auto;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.calc-btn {
+  height: 4.5rem;
+  border-radius: 50px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.calc-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50px;
+  background-color: var(--bg-color);
+  opacity: 0;
+}
+
+.calc-btn:hover::after {
+  opacity: 0.1;
+  transition: all 0.15 ease-in-out;
+}
+
+.calc-btn p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+}
+
+.fn {
+  background-color: var(--fn-btn);
+  color: var(--bg-color);
+}
+
+.zero {
+  grid-column: 1 / 3;
+}
+
+.zero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4.5rem;
+  width: 100%;
+  border-radius: 50px;
+  background-color: var(--bg-color);
+  opacity: 0;
+}
+
+.zero:hover::after {
+  opacity: 0.1;
+  transition: all 0.15 ease-in-out;
+}
+
+.operator {
+  background-color: var(--operator);
+}
+
+.num {
+  background-color: var(--num-btn);
+}
