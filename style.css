@@ -122,6 +122,10 @@ body {
   font-size: 1.5rem;
 }
 
+.delete-btn {
+  size: 2rem;
+}
+
 .fn {
   background-color: var(--fn-btn);
   color: var(--bg-color);
