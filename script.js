@@ -52,9 +52,6 @@ for (let i = 0; i < numBtns.length; i++) {
 
 for (let i = 0; i < operatorBtns.length; i++) {
   operatorBtns[i].addEventListener("click", () => {
-    if (isOverInputLimit()) {
-      return;
-    }
     // Check to see if it's valid to use an operator
     // The only valid scenario is when the last character is not an operator and it's not an empty text
     if (
@@ -68,7 +65,7 @@ for (let i = 0; i < operatorBtns.length; i++) {
         calculate();
         isCalculated = true;
       } else {
-        if (isCalculated) {
+        if (isCalculated && !isOverInputLimit()) {
           expression.innerText = result.innerText.substring(1);
           resetResultStyle();
           isCalculated = false;
