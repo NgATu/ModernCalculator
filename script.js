@@ -5,6 +5,8 @@ const numBtns = document.getElementsByClassName("num");
 const operatorBtns = document.getElementsByClassName("operator");
 const operators = new Set(["+", "-", "*", "/"]);
 
+var doneCalculated = false;
+
 function calculate() {
   if (
     operators.has(
@@ -55,7 +57,13 @@ for (let i = 0; i < operatorBtns.length; i++) {
       if (operatorBtns[i].innerText === "=") {
         updateResultStyle();
         calculate();
+        doneCalculated = true;
       } else {
+        if (doneCalculated) {
+          expression.innerText = result.innerText.substring(1);
+          resetResultStyle();
+          doneCalculated = false;
+        }
         expression.innerText += operatorBtns[i].innerText;
       }
     }
